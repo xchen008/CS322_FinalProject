@@ -9,16 +9,12 @@ package ebaymazon;
  *
  * @author XueruChen
  */
-public class EbayMazon {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-
-        ProductList products = new ProductList();
+public class Login {
     
-    }
+    OrdUser[] OrdUserList = new OrdUser[1000];
+    SupUser[] SupUserList = new SupUser[20];
+    
+    
+    
     
 }
