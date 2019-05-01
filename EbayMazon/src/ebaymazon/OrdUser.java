@@ -15,5 +15,40 @@ public class OrdUser {
     int[] friendlist = new int[100]; 
     int warning = 0;
     
+    private void submitBid(Bid bid){
+        //bid.getPrice();
+    }
+    
+    private void sellItem(Item item){
+        
+    }
+    
+    private void newItem(Item item){
+        
+    }
+    
+    private void purchaseIntention(){
+        
+    }
+    
+    private void fileComplaint(Complain complain){
+        
+    }
+    
+    private void grade(){
+        //get/set for grade?
+    }
+    
+    private void Transaction(){
+        //maybe make a list of transaction db?
+    }
+    
+    private void changeInfo(){
+        //to edit information
+    }
+    
+    private void FriendList(){
+        
+    }
     
 }

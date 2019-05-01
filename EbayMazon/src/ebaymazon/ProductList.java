@@ -11,6 +11,7 @@ package ebaymazon;
  */
 public class ProductList {
     
-    //list of all item
+    //list of all items from the product list Db
+    
     
 }

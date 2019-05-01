@@ -10,10 +10,37 @@ package ebaymazon;
  * @author XueruChen
  */
 public class Complain {
-    
     int buyerid;
     int sellerid;
-    String Words;
+    String complaint;
     
+    public Complain(int buyerid, int sellerid, String complaint){
+        this.buyerid=buyerid;
+        this.sellerid=sellerid;
+        this.complaint=complaint;
+    }
+    public int getBuyerID(){
+        return buyerid;
+    }
+    
+    public void setBuyerID(int buyerid){
+        this.buyerid=buyerid;
+    }
+    
+    public int getSellerID(){
+        return sellerid;
+    }
+    
+    public void setSellerID(int sellerid){
+        this.sellerid=sellerid;
+    }
+    
+    public String getComplaint(){
+        return complaint;
+    }
+    
+    public void setComplaint(String complaint){
+        this.complaint=complaint;
+    }
     
 }

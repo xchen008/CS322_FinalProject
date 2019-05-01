@@ -10,5 +10,6 @@ package ebaymazon;
  * @author XueruChen
  */
 public class GuestUser {
+    //constructor to initialize application form
     
 }
