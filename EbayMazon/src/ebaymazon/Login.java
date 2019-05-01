@@ -14,7 +14,5 @@ public class Login {
     OrdUser[] OrdUserList = new OrdUser[1000];
     SupUser[] SupUserList = new SupUser[20];
     
-  
-    
     
 }
