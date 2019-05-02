@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ebaymazon;
 
-/**
- *
- * @author Janice
- */
 public class SU_MainPage extends javax.swing.JFrame {
 
     /**
@@ -37,6 +29,7 @@ public class SU_MainPage extends javax.swing.JFrame {
         Complains = new javax.swing.JToggleButton();
         BlackList = new javax.swing.JToggleButton();
         Taboo = new javax.swing.JToggleButton();
+        Cancel = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SU_MainPage");
@@ -69,6 +62,13 @@ public class SU_MainPage extends javax.swing.JFrame {
 
         Taboo.setText("Taboo List");
 
+        Cancel.setText("Cancel");
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -94,6 +94,10 @@ public class SU_MainPage extends javax.swing.JFrame {
                             .addComponent(Taboo, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(BlackList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(93, 93, 93)
+                .addComponent(Cancel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +117,9 @@ public class SU_MainPage extends javax.swing.JFrame {
                     .addComponent(SellingTrans)
                     .addComponent(BuyingTrans)
                     .addComponent(Taboo))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(Cancel)
+                .addGap(24, 24, 24))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 580, 380));
@@ -125,6 +131,10 @@ public class SU_MainPage extends javax.swing.JFrame {
     private void AppliactionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppliactionsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AppliactionsActionPerformed
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,6 +176,7 @@ public class SU_MainPage extends javax.swing.JFrame {
     private javax.swing.JToggleButton AvaliableItems;
     private javax.swing.JToggleButton BlackList;
     private javax.swing.JToggleButton BuyingTrans;
+    private javax.swing.JToggleButton Cancel;
     private javax.swing.JToggleButton Complains;
     private javax.swing.JToggleButton NewItem;
     private javax.swing.JToggleButton SellingTrans;

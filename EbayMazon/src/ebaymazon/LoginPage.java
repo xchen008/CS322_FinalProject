@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 
 public class LoginPage extends javax.swing.JFrame {
-    java.sql.Connection connect = null;
+    Connection connect = null;
     ResultSet rs = null;
     Statement st;
     
@@ -130,7 +130,7 @@ public class LoginPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        String Username = jtxtUsername.getText(); 
+        /*String Username = jtxtUsername.getText(); 
         String Password = jtxtPassword.getText(); 
         
         try
@@ -155,7 +155,7 @@ public class LoginPage extends javax.swing.JFrame {
             ou.setVisible(true);
                 
         
-        }
+        }*/
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
