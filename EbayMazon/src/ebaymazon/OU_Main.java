@@ -149,6 +149,7 @@ public class OU_Main extends JFrame {
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
         
         // TODO add your handling code here:
+        setVisible(false);
         LoginPage out = new LoginPage();
         out.setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
