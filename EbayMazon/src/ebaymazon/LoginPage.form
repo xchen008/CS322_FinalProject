@@ -104,7 +104,7 @@
                               <EmptySpace min="-2" pref="240" max="-2" attributes="0"/>
                               <Component id="Login" min="-2" pref="129" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jPanel2" alignment="0" min="-2" pref="648" max="-2" attributes="0"/>
+                          <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="9" max="32767" attributes="0"/>
                   </Group>
@@ -169,8 +169,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="GU" min="-2" pref="152" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="SubmitApp" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="SubmitApp" pref="143" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="SU" min="-2" pref="139" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -213,7 +213,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="SubmitApp">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Submit Application"/>
+                    <Property name="text" type="java.lang.String" value="Sign-up"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="GU">
