@@ -12,10 +12,7 @@ package ebaymazon;
 public class Item {
     
     //submit bid should be here, we can have an array of user's bid
-    Bid[] allbid = new Bid[10];
     int seller;
-    int buyer;
-    int time;
     // not sure if this is the class for new item information?
     //if not, I think we need a new class for new item info.
     String[] key_words; //maybe we can have an array with key words for the user to choose from
