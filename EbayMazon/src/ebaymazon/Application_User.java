@@ -1,4 +1,4 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -166,7 +166,7 @@ public class Application_User extends javax.swing.JFrame {
         PreparedStatement ps=null;
         try{
             Class.forName(username);
-            conn=DriverManager.getConnection("");
+            conn=DriverManager.getConnection("jdbc:derby://localhost:1527/UserDB");
             ps=conn.prepareStatement("insert into applicationdb values (?,?,?,?,?)");
             ps.setString(1,name);
             ps.setString(2, address);
