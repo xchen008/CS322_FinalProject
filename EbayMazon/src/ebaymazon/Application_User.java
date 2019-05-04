@@ -5,6 +5,11 @@
  */
 package ebaymazon;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author anjanarajan
@@ -152,6 +157,33 @@ public class Application_User extends javax.swing.JFrame {
 
     private void jtxtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNameActionPerformed
         // TODO add your handling code here:
+        String name=jtxtName.getText();
+        String address=jtxtAddress.getText();
+        String phonenumber=jtxtPhoneNumber.getText();
+        String credit_card=jtxtCCN.getText();
+        String username=jtxtUserName.getText();
+        Connection conn=null;
+        PreparedStatement ps=null;
+        try{
+            Class.forName(username);
+            conn=DriverManager.getConnection("");
+            ps=conn.prepareStatement("insert into applicationdb values (?,?,?,?,?)");
+            ps.setString(1,name);
+            ps.setString(2, address);
+            ps.setString(3, phonenumber);
+            ps.setString(4,credit_card);
+            ps.setString(5,username);
+            int i=ps.executeUpdate();
+            if (i>0){
+                JOptionPane.showMessageDialog(null, "Data is saved!");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Data is not saved!");
+            }  
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Data is saved!");
+        }
     }//GEN-LAST:event_jtxtNameActionPerformed
 
     /**
