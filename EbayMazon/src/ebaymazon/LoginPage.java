@@ -7,6 +7,7 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -45,7 +46,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Cancel = new javax.swing.JButton();
         SU = new javax.swing.JButton();
-        SubmitApp = new javax.swing.JButton();
+        Signup = new javax.swing.JButton();
         GU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -83,7 +84,12 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        SubmitApp.setText("Sign-up");
+        Signup.setText("Sign-up");
+        Signup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignupActionPerformed(evt);
+            }
+        });
 
         GU.setText("Guest");
         GU.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +106,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(GU, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(SubmitApp, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                .addComponent(Signup, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SU, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -114,7 +120,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
                     .addComponent(SU)
-                    .addComponent(SubmitApp)
+                    .addComponent(Signup)
                     .addComponent(GU))
                 .addGap(35, 35, 35))
         );
@@ -204,12 +210,11 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Username = jtxtUsername.getText();
         String Password = jtxtPassword.getText();
-        
-        
+
         try
         {
+            
             int log = 1;
-            //Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
             connect = DriverManager.getConnection("jdbc:derby://localhost:1527/UserDB","root","abc123");
             st = (Statement)connect.createStatement();
             rs = st.executeQuery("SELECT * FROM ROOT.USERDB FETCH FIRST 100 ROWS ONLY");
@@ -248,6 +253,13 @@ public class LoginPage extends javax.swing.JFrame {
     private void SUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SUActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SUActionPerformed
+
+    private void SignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignupActionPerformed
+        // TODO add your handling code here:
+        Application_User fr = new Application_User();
+        fr.setVisible(true);
+        
+    }//GEN-LAST:event_SignupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,7 +306,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JButton Login;
     private javax.swing.JLabel Password;
     private javax.swing.JButton SU;
-    private javax.swing.JButton SubmitApp;
+    private javax.swing.JButton Signup;
     private javax.swing.JLabel Username;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
