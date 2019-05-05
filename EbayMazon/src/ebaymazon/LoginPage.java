@@ -21,7 +21,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     Connection connect = null;
     ResultSet rs = null;
-    Statement st;
+    Statement st = null;
     
     public LoginPage() {
         initComponents();
@@ -213,11 +213,10 @@ public class LoginPage extends javax.swing.JFrame {
 
         try
         {
-            
             int log = 1;
-            connect = DriverManager.getConnection("jdbc:derby://localhost:1527/UserDB","root","abc123");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/JMAXDB?useLegacyDatetimeCode=false&serverTimezone=America/New_York","root","comp2020");
             st = (Statement)connect.createStatement();
-            rs = st.executeQuery("SELECT * FROM ROOT.USERDB FETCH FIRST 100 ROWS ONLY");
+            rs = st.executeQuery("SELECT * FROM JMAXDB.User");
             
             while(rs.next())
             {
