@@ -211,18 +211,12 @@ public class LoginPage extends javax.swing.JFrame {
         String Username = jtxtUsername.getText();
         String Password = jtxtPassword.getText();
         
-        String createUserTable = "CREATE TABLE IF NOT EXISTS User("
-            + "username VARCHAR(50) PRIMARY KEY NOT NULL,"
-            + "password VARCHAR(50),"
-            + "address VARCHAR(50));";
-        
         try
         {
             int log = 1;
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/JMAXDB?useLegacyDatetimeCode=false&serverTimezone=America/New_York","root","comp2020");
+            connect = DriverManager.getConnection("jdbc:mysql://35.193.187.149:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","jmax_user","");
             st = (Statement)connect.createStatement();
-            st.executeUpdate(createUserTable);
-            rs = st.executeQuery("SELECT * FROM JMAXDB.User");
+            rs = st.executeQuery("SELECT * FROM jmaxdb.user");
 
             while(rs.next())
             {
