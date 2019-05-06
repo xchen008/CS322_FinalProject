@@ -210,14 +210,20 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Username = jtxtUsername.getText();
         String Password = jtxtPassword.getText();
-
+        
+        String createUserTable = "CREATE TABLE IF NOT EXISTS User("
+            + "username VARCHAR(50) PRIMARY KEY NOT NULL,"
+            + "password VARCHAR(50),"
+            + "address VARCHAR(50));";
+        
         try
         {
             int log = 1;
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:8889/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","jmax_user","comp2020");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/JMAXDB?useLegacyDatetimeCode=false&serverTimezone=America/New_York","root","comp2020");
             st = (Statement)connect.createStatement();
-            rs = st.executeQuery("SELECT * FROM jmaxdb.UserDB");
-            
+            st.executeUpdate(createUserTable);
+            rs = st.executeQuery("SELECT * FROM JMAXDB.User");
+
             while(rs.next())
             {
                 if(rs.getString(1).equals(Username)&&rs.getString(2).equals(Password))
