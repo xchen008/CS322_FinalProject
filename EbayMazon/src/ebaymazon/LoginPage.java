@@ -214,9 +214,9 @@ public class LoginPage extends javax.swing.JFrame {
         try
         {
             int log = 1;
-            connect = DriverManager.getConnection("jdbc:mysql://35.193.187.149:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","jmax_user","");
+            connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             st = (Statement)connect.createStatement();
-            rs = st.executeQuery("SELECT * FROM jmaxdb.user");
+            rs = st.executeQuery("SELECT * FROM User");
 
             while(rs.next())
             {
