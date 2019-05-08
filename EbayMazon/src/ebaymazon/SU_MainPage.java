@@ -142,6 +142,9 @@ public class SU_MainPage extends javax.swing.JFrame {
 
     private void NewUsersAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewUsersAppActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        SU_GUApplications newapp = new SU_GUApplications();
+        newapp.setVisible(true);
     }//GEN-LAST:event_NewUsersAppActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed

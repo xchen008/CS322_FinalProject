@@ -175,8 +175,8 @@ public class Application_User extends javax.swing.JFrame {
         Connection conn=null;
         PreparedStatement pstmt=null;
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/userapplication","root", "");
+            //Class.forName("com.mysql.jdbc.Driver");
+            conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
             pstmt.setString(1, name);
             pstmt.setString(2, address);
