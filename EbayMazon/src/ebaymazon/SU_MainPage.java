@@ -21,15 +21,16 @@ public class SU_MainPage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         AvaliableItems = new javax.swing.JToggleButton();
-        Appliactions = new javax.swing.JToggleButton();
+        NewUsersApp = new javax.swing.JToggleButton();
         SellingTrans = new javax.swing.JToggleButton();
         NewItem = new javax.swing.JToggleButton();
-        Users = new javax.swing.JToggleButton();
+        ListOfUsers = new javax.swing.JToggleButton();
         BuyingTrans = new javax.swing.JToggleButton();
         Complains = new javax.swing.JToggleButton();
         BlackList = new javax.swing.JToggleButton();
         Taboo = new javax.swing.JToggleButton();
         Cancel = new javax.swing.JToggleButton();
+        Logout = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SU_MainPage");
@@ -41,10 +42,10 @@ public class SU_MainPage extends javax.swing.JFrame {
 
         AvaliableItems.setText("Avaliable Items");
 
-        Appliactions.setText("Applications");
-        Appliactions.addActionListener(new java.awt.event.ActionListener() {
+        NewUsersApp.setText("New Users Applications");
+        NewUsersApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AppliactionsActionPerformed(evt);
+                NewUsersAppActionPerformed(evt);
             }
         });
 
@@ -52,7 +53,7 @@ public class SU_MainPage extends javax.swing.JFrame {
 
         NewItem.setText("New Item Info");
 
-        Users.setText("Users");
+        ListOfUsers.setText("List of Users");
 
         BuyingTrans.setText("Buying Transactions");
 
@@ -69,27 +70,34 @@ public class SU_MainPage extends javax.swing.JFrame {
             }
         });
 
+        Logout.setText("Logout");
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NewUsersApp, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AvaliableItems, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SellingTrans))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(NewItem, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
                         .addComponent(Complains, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Appliactions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SellingTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(AvaliableItems, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Users, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NewItem, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ListOfUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BuyingTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Taboo, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(BlackList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -97,7 +105,9 @@ public class SU_MainPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addComponent(Cancel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Logout)
+                .addGap(109, 109, 109))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,8 +119,8 @@ public class SU_MainPage extends javax.swing.JFrame {
                     .addComponent(Complains))
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Appliactions)
-                    .addComponent(Users)
+                    .addComponent(NewUsersApp)
+                    .addComponent(ListOfUsers)
                     .addComponent(BlackList))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -118,7 +128,9 @@ public class SU_MainPage extends javax.swing.JFrame {
                     .addComponent(BuyingTrans)
                     .addComponent(Taboo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(Cancel)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cancel)
+                    .addComponent(Logout))
                 .addGap(24, 24, 24))
         );
 
@@ -128,13 +140,23 @@ public class SU_MainPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AppliactionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppliactionsActionPerformed
+    private void NewUsersAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewUsersAppActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AppliactionsActionPerformed
+        setVisible(false);
+        SU_GUApplications newapp = new SU_GUApplications();
+        newapp.setVisible(true);
+    }//GEN-LAST:event_NewUsersAppActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         System.exit(0);
     }//GEN-LAST:event_CancelActionPerformed
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+
+        setVisible(false);
+        LoginPage logout = new LoginPage();
+        logout.setVisible(true);
+    }//GEN-LAST:event_LogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,16 +194,17 @@ public class SU_MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton Appliactions;
     private javax.swing.JToggleButton AvaliableItems;
     private javax.swing.JToggleButton BlackList;
     private javax.swing.JToggleButton BuyingTrans;
     private javax.swing.JToggleButton Cancel;
     private javax.swing.JToggleButton Complains;
+    private javax.swing.JToggleButton ListOfUsers;
+    private javax.swing.JToggleButton Logout;
     private javax.swing.JToggleButton NewItem;
+    private javax.swing.JToggleButton NewUsersApp;
     private javax.swing.JToggleButton SellingTrans;
     private javax.swing.JToggleButton Taboo;
-    private javax.swing.JToggleButton Users;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

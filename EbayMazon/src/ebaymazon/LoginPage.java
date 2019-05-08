@@ -2,26 +2,26 @@
 package ebaymazon;
 
 import java.sql.ResultSet;
+import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JFrame;
-import com.sun.jndi.ldap.Connection;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 
 public class LoginPage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginPage
-     */
-    //Connection connect = null;
-    //ResultSet rs = null;
-    //Statement st;
+
+    Connection connect = null;
+    ResultSet rs = null;
+    Statement st = null;
     
     public LoginPage() {
         initComponents();
@@ -46,7 +46,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Cancel = new javax.swing.JButton();
         SU = new javax.swing.JButton();
-        SubmitApp = new javax.swing.JButton();
+        Signup = new javax.swing.JButton();
         GU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -84,7 +84,12 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        SubmitApp.setText("Submit Application");
+        Signup.setText("Sign-up");
+        Signup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignupActionPerformed(evt);
+            }
+        });
 
         GU.setText("Guest");
         GU.addActionListener(new java.awt.event.ActionListener() {
@@ -100,8 +105,8 @@ public class LoginPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(GU, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SubmitApp)
+                .addGap(18, 18, 18)
+                .addComponent(Signup, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SU, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -115,7 +120,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
                     .addComponent(SU)
-                    .addComponent(SubmitApp)
+                    .addComponent(Signup)
                     .addComponent(GU))
                 .addGap(35, 35, 35))
         );
@@ -138,7 +143,7 @@ public class LoginPage extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(240, 240, 240)
                         .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -206,21 +211,13 @@ public class LoginPage extends javax.swing.JFrame {
         String Username = jtxtUsername.getText();
         String Password = jtxtPassword.getText();
         
-        if (Username.equals("name")&&Password.equals("hello"))
+        try
         {
-            setVisible(false);
-            OU_Main main = new OU_Main();
-            main.setVisible(true);
-            
-        }
-        
-        /*try
-        {
-            int log = 0;
-            connect = DriverManager.getConnection("jdbc:derby://localhost:1527/UserDB","JMAX","LoginPage");
+            int log = 1;
+            connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             st = (Statement)connect.createStatement();
-            rs = st.executeQuery("SELECT * FROM ordUser");
-            
+            rs = st.executeQuery("SELECT * FROM User");
+
             while(rs.next())
             {
                 if(rs.getString(1).equals(Username)&&rs.getString(2).equals(Password))
@@ -230,15 +227,21 @@ public class LoginPage extends javax.swing.JFrame {
                 }
             }
             
+            if(log == 1)
+            {
+                    JOptionPane.showMessageDialog(null, "Wrong password");
+            }
+            
             if(log == 0)
             {
                 OU_Main main = new OU_Main();
                 main.setVisible(true);
+                this.setVisible(false);
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
     }//GEN-LAST:event_LoginActionPerformed
 
@@ -250,10 +253,21 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SUActionPerformed
 
+    private void SignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignupActionPerformed
+        // TODO add your handling code here:
+        Application_User fr = new Application_User();
+        fr.setVisible(true);
+        
+    }//GEN-LAST:event_SignupActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        //Connection conn = null;
+        //String url = "jdbc:derby://localhost:1527/";
+        //String dbName
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -291,7 +305,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JButton Login;
     private javax.swing.JLabel Password;
     private javax.swing.JButton SU;
-    private javax.swing.JButton SubmitApp;
+    private javax.swing.JButton Signup;
     private javax.swing.JLabel Username;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

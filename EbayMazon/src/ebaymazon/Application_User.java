@@ -39,12 +39,12 @@ public class Application_User extends javax.swing.JFrame {
         jtxtName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_submit = new javax.swing.JButton();
         jtxtPhoneNumber = new javax.swing.JTextField();
         jtxtCCN = new javax.swing.JTextField();
         jtxtAddress = new javax.swing.JTextField();
         jtxtUserName = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btn_cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Application_User with Database");
@@ -76,9 +76,14 @@ public class Application_User extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Username");
 
-        jButton1.setText("Submit");
+        btn_submit.setText("Submit");
+        btn_submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_submitActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cancel");
+        btn_cancel.setText("Cancel");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,9 +116,9 @@ public class Application_User extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,8 +149,8 @@ public class Application_User extends javax.swing.JFrame {
                         .addComponent(jtxtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
 
@@ -157,34 +162,41 @@ public class Application_User extends javax.swing.JFrame {
 
     private void jtxtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNameActionPerformed
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jtxtNameActionPerformed
+
+    private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
+        // TODO add your handling code here:
         String name=jtxtName.getText();
         String address=jtxtAddress.getText();
         String phonenumber=jtxtPhoneNumber.getText();
         String credit_card=jtxtCCN.getText();
         String username=jtxtUserName.getText();
         Connection conn=null;
-        PreparedStatement ps=null;
+        PreparedStatement pstmt=null;
         try{
-            Class.forName(username);
-            conn=DriverManager.getConnection("jdbc:derby://localhost:1527/UserDB");
-            ps=conn.prepareStatement("insert into applicationdb values (?,?,?,?,?)");
-            ps.setString(1,name);
-            ps.setString(2, address);
-            ps.setString(3, phonenumber);
-            ps.setString(4,credit_card);
-            ps.setString(5,username);
-            int i=ps.executeUpdate();
+            //Class.forName("com.mysql.jdbc.Driver");
+            conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+            pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
+            pstmt.setString(1, name);
+            pstmt.setString(2, address);
+            pstmt.setString(3, phonenumber);
+            pstmt.setString(4, credit_card);
+            pstmt.setString(5, username);
+            int i=pstmt.executeUpdate();
             if (i>0){
                 JOptionPane.showMessageDialog(null, "Data is saved!");
             }
-            else {
+            else{
                 JOptionPane.showMessageDialog(null, "Data is not saved!");
-            }  
+            }
         }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Data is saved!");
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
         }
-    }//GEN-LAST:event_jtxtNameActionPerformed
+    }//GEN-LAST:event_btn_submitActionPerformed
+                                       
+
 
     /**
      * @param args the command line arguments
@@ -222,8 +234,8 @@ public class Application_User extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btn_submit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

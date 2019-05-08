@@ -18,6 +18,7 @@ public class EbayMazon {
 
 
         ProductList products = new ProductList();
+        new Application_User().setVisible(true);
         
     }
     
