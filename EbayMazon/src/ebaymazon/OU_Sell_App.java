@@ -122,7 +122,6 @@ public class OU_Sell_App extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 750, 480));
-        jPanel1.getAccessibleContext().setAccessibleName("Sumbit Application to Sell");
 
         pack();
         setLocationRelativeTo(null);
