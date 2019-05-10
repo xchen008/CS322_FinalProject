@@ -82,11 +82,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jToggleButton2" min="-2" pref="104" max="-2" attributes="0"/>
+                          <Component id="Profile" min="-2" pref="104" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jToggleButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="MyProducts" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jToggleButton4" min="-2" pref="152" max="-2" attributes="0"/>
+                          <Component id="Transation" min="-2" pref="152" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="Search" min="-2" pref="97" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -98,9 +98,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Component id="Prod_Panel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="44" max="32767" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -111,12 +111,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jToggleButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jToggleButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Profile" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="MyProducts" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Searchbar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Search" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Logout" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jToggleButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="Transation" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -160,17 +160,20 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+        <Component class="javax.swing.JToggleButton" name="Profile">
           <Properties>
             <Property name="text" type="java.lang.String" value="Profile"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProfileActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton3">
+        <Component class="javax.swing.JToggleButton" name="MyProducts">
           <Properties>
             <Property name="text" type="java.lang.String" value="My Products"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MyProductsActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="Prod_Panel">
@@ -247,12 +250,12 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton4">
+        <Component class="javax.swing.JToggleButton" name="Transation">
           <Properties>
             <Property name="text" type="java.lang.String" value="Transation"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TransationActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Logout">

@@ -30,10 +30,13 @@ public class OU_Main extends JFrame{
      * Creates new form OU_Main
      * 
      */
+    String str = new String("User");
     
     public OU_Main(String string) {
 
         initComponents();
+        
+        str = string;
         
         Object[][] data = new Object[30][4];
         
@@ -74,6 +77,7 @@ public class OU_Main extends JFrame{
                 return canEdit [columnIndex];
             }
         });
+
         
     }
 
@@ -93,12 +97,12 @@ public class OU_Main extends JFrame{
         Searchbar = new javax.swing.JTextField();
         Search = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        Profile = new javax.swing.JToggleButton();
+        MyProducts = new javax.swing.JToggleButton();
         Prod_Panel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         PTable = new javax.swing.JTable();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        Transation = new javax.swing.JToggleButton();
         Logout = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
@@ -139,12 +143,17 @@ public class OU_Main extends JFrame{
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jToggleButton2.setText("Profile");
-
-        jToggleButton3.setText("My Products");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        Profile.setText("Profile");
+        Profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                ProfileActionPerformed(evt);
+            }
+        });
+
+        MyProducts.setText("My Products");
+        MyProducts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MyProductsActionPerformed(evt);
             }
         });
 
@@ -188,10 +197,10 @@ public class OU_Main extends JFrame{
             .addComponent(jScrollPane2)
         );
 
-        jToggleButton4.setText("Transation");
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        Transation.setText("Transation");
+        Transation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                TransationActionPerformed(evt);
             }
         });
 
@@ -210,11 +219,11 @@ public class OU_Main extends JFrame{
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton3)
+                        .addComponent(MyProducts)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Transation, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -225,21 +234,21 @@ public class OU_Main extends JFrame{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(Prod_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addGap(39, 39, 39)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(44, Short.MAX_VALUE))))
+                        .addContainerGap(47, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton3)
+                    .addComponent(Profile)
+                    .addComponent(MyProducts)
                     .addComponent(Searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Search)
                     .addComponent(Logout)
-                    .addComponent(jToggleButton4))
+                    .addComponent(Transation))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Prod_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -261,16 +270,22 @@ public class OU_Main extends JFrame{
         out.setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+    private void TransationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransationActionPerformed
 
         OU_Transaction out = new OU_Transaction();
         out.setVisible(true);
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    }//GEN-LAST:event_TransationActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        OU_Products out = new OU_Products();
+    private void MyProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyProductsActionPerformed
+       
+        OU_Products out = new OU_Products(str);
         out.setVisible(true);
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+        
+    }//GEN-LAST:event_MyProductsActionPerformed
+
+    private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,18 +324,18 @@ public class OU_Main extends JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Logout;
+    private javax.swing.JToggleButton MyProducts;
     private javax.swing.JTable PTable;
     private javax.swing.JPanel Prod_Panel;
+    private javax.swing.JToggleButton Profile;
     private javax.swing.JButton Search;
     private javax.swing.JTextField Searchbar;
+    private javax.swing.JToggleButton Transation;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     // End of variables declaration//GEN-END:variables
 }
