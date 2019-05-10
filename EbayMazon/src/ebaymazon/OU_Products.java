@@ -86,6 +86,7 @@ public class OU_Products extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         PTable = new javax.swing.JTable();
         Add = new javax.swing.JButton();
+        close = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("OU_Products");
@@ -134,6 +135,13 @@ public class OU_Products extends javax.swing.JFrame {
             }
         });
 
+        close.setText("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -147,7 +155,9 @@ public class OU_Products extends javax.swing.JFrame {
                         .addGap(56, 56, 56)
                         .addComponent(jLabel2)
                         .addGap(45, 45, 45)
-                        .addComponent(Add)))
+                        .addComponent(Add)
+                        .addGap(29, 29, 29)
+                        .addComponent(close)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -157,7 +167,8 @@ public class OU_Products extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(Add))
+                    .addComponent(Add)
+                    .addComponent(close))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -182,6 +193,10 @@ public class OU_Products extends javax.swing.JFrame {
         OU_Sell_App fr = new OU_Sell_App();
         fr.setVisible(true);
     }//GEN-LAST:event_AddActionPerformed
+
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_closeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,6 +236,7 @@ public class OU_Products extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JTable PTable;
+    private javax.swing.JButton close;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
