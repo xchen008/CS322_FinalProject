@@ -1,6 +1,7 @@
 
 package ebaymazon;
 
+
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -16,14 +17,12 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 
 
+
 public class LoginPage extends javax.swing.JFrame {
-
-
-    Connection connect = null;
-    ResultSet rs = null;
-    Statement st = null;
+   
     
     public LoginPage() {
+        
         initComponents();
     }
 
@@ -211,12 +210,13 @@ public class LoginPage extends javax.swing.JFrame {
         String Username = jtxtUsername.getText();
         String Password = jtxtPassword.getText();
         
+        
         try
         {
             int log = 1;
-            connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
-            st = (Statement)connect.createStatement();
-            rs = st.executeQuery("SELECT * FROM User");
+            Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+            Statement st = (Statement)connect.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM User");
 
             while(rs.next())
             {
@@ -234,7 +234,7 @@ public class LoginPage extends javax.swing.JFrame {
             
             if(log == 0)
             {
-                OU_Main main = new OU_Main();
+                OU_Main main = new OU_Main(Username);
                 main.setVisible(true);
                 this.setVisible(false);
             }
@@ -264,32 +264,8 @@ public class LoginPage extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        //Connection conn = null;
-        //String url = "jdbc:derby://localhost:1527/";
-        //String dbName
-        
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
