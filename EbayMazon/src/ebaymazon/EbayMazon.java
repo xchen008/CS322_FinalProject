@@ -17,8 +17,6 @@ public class EbayMazon {
     public static void main(String[] args) {
 
 
-        ProductList products = new ProductList();
-        new Application_User().setVisible(true);
         
     }
     
