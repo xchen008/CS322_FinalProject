@@ -6,6 +6,8 @@
 package ebaymazon;
 
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -77,8 +79,17 @@ public class OU_Main extends JFrame{
                 return canEdit [columnIndex];
             }
         });
-
         
+        
+        PTable.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+        int row = PTable.getSelectedRow();
+        Purchase_Confirm fr;
+        fr = new Purchase_Confirm(data[row][0].toString(),str);
+        fr.setVisible(true);
+                
+        }
+        });
     }
 
     /**
@@ -320,6 +331,7 @@ public class OU_Main extends JFrame{
                 new OU_Main("User").setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

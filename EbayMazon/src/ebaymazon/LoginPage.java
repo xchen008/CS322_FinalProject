@@ -1,6 +1,4 @@
-
 package ebaymazon;
-
 
 import java.sql.ResultSet;
 import java.sql.Connection;
@@ -16,13 +14,10 @@ import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import java.sql.*;
 
-
-
 public class LoginPage extends javax.swing.JFrame {
-   
-    
+
     public LoginPage() {
-        
+
         initComponents();
     }
 
@@ -209,40 +204,34 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Username = jtxtUsername.getText();
         String Password = jtxtPassword.getText();
-        
-        
-        try
-        {
+
+        try {
             int log = 1;
-            Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
-            Statement st = (Statement)connect.createStatement();
+            Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York", "csc322", "comp2020");
+            Statement st = (Statement) connect.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM User");
 
-            while(rs.next())
-            {
-                if(rs.getString(1).equals(Username)&&rs.getString(2).equals(Password))
-                {
+            while (rs.next()) {
+                if (rs.getString(1).equals(Username) && rs.getString(2).equals(Password)) {
                     log = 0;
                     break;
                 }
             }
-            
-            if(log == 1)
-            {
-                    JOptionPane.showMessageDialog(null, "Wrong password");
+
+            if (log == 1) {
+                JOptionPane.showMessageDialog(null, "Wrong password");
             }
-            
-            if(log == 0)
-            {
+
+            if (log == 0) {
                 OU_Main main = new OU_Main(Username);
                 main.setVisible(true);
                 this.setVisible(false);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_LoginActionPerformed
 
     private void GUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GUActionPerformed
@@ -257,15 +246,13 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         Application_User fr = new Application_User();
         fr.setVisible(true);
-        
+
     }//GEN-LAST:event_SignupActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
-
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
