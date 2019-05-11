@@ -19,11 +19,8 @@ import java.util.logging.Logger;
  * @author Janice
  */
 public class EditProfile extends javax.swing.JFrame {
-
-    /**
-     * Creates new form EditProfile
-     */
-    public EditProfile() {
+    
+    public EditProfile(String str, int x) {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -45,7 +42,8 @@ public class EditProfile extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(200, 100));
+        setPreferredSize(new java.awt.Dimension(300, 200));
+        setSize(new java.awt.Dimension(300, 200));
 
         Close.setText("Close");
         Close.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +64,7 @@ public class EditProfile extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Close)
@@ -84,7 +82,7 @@ public class EditProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Close)
                     .addComponent(Done))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,7 +138,7 @@ public class EditProfile extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditProfile().setVisible(true);
+                new EditProfile(" ",0).setVisible(true);
             }
         });
     }

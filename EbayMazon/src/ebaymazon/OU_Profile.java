@@ -64,6 +64,10 @@ public class OU_Profile extends javax.swing.JFrame {
         creditcard = new javax.swing.JLabel();
         phonenumber = new javax.swing.JLabel();
         FriendList = new javax.swing.JButton();
+        EditPassword = new javax.swing.JButton();
+        EditAddress = new javax.swing.JButton();
+        EditCreditCard = new javax.swing.JButton();
+        EditPhoneNumber = new javax.swing.JButton();
 
         jButton4.setText("jButton1");
 
@@ -176,26 +180,71 @@ public class OU_Profile extends javax.swing.JFrame {
 
         FriendList.setText("View Friends List");
 
+        EditPassword.setText("Edit");
+        EditPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditPasswordActionPerformed(evt);
+            }
+        });
+
+        EditAddress.setText("Edit");
+        EditAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditAddressActionPerformed(evt);
+            }
+        });
+
+        EditCreditCard.setText("Edit");
+        EditCreditCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditCreditCardActionPerformed(evt);
+            }
+        });
+
+        EditPhoneNumber.setText("Edit");
+        EditPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditPhoneNumberActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(FriendList, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(FriendList, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EditPassword)
+                    .addComponent(Close, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditAddress)
+                    .addComponent(EditCreditCard)
+                    .addComponent(EditPhoneNumber))
                 .addGap(31, 31, 31))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(EditPassword)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditAddress)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditCreditCard)
+                        .addGap(26, 26, 26)
+                        .addComponent(EditPhoneNumber)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FriendList)
@@ -213,9 +262,26 @@ public class OU_Profile extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_CloseActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void EditPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPasswordActionPerformed
+        EditProfile editpass = new EditProfile(str,1);
+        editpass.setVisible(true);
+    }//GEN-LAST:event_EditPasswordActionPerformed
+
+    private void EditAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditAddressActionPerformed
+        EditProfile editaddr = new EditProfile(str,2);
+        editaddr.setVisible(true);
+    }//GEN-LAST:event_EditAddressActionPerformed
+
+    private void EditCreditCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCreditCardActionPerformed
+        EditProfile editcc = new EditProfile(str,3);
+        editcc.setVisible(true);
+    }//GEN-LAST:event_EditCreditCardActionPerformed
+
+    private void EditPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPhoneNumberActionPerformed
+        EditProfile editnum = new EditProfile(str,4);
+        editnum.setVisible(true);
+    }//GEN-LAST:event_EditPhoneNumberActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -250,6 +316,10 @@ public class OU_Profile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Close;
+    private javax.swing.JButton EditAddress;
+    private javax.swing.JButton EditCreditCard;
+    private javax.swing.JButton EditPassword;
+    private javax.swing.JButton EditPhoneNumber;
     private javax.swing.JButton FriendList;
     private javax.swing.JLabel Item2;
     private javax.swing.JLabel Number;
