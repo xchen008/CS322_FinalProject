@@ -252,7 +252,7 @@
         </Container>
         <Component class="javax.swing.JToggleButton" name="Transation">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Transation"/>
+            <Property name="text" type="java.lang.String" value="Transaction"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TransationActionPerformed"/>

@@ -208,7 +208,7 @@ public class OU_Main extends JFrame{
             .addComponent(jScrollPane2)
         );
 
-        Transation.setText("Transation");
+        Transation.setText("Transaction");
         Transation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TransationActionPerformed(evt);
