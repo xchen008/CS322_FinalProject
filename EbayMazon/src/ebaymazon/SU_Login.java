@@ -5,6 +5,15 @@
  */
 package ebaymazon;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author anjanarajan
@@ -32,8 +41,8 @@ public class SU_Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jtxtUsername = new javax.swing.JTextField();
+        jtxtPassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
@@ -52,6 +61,11 @@ public class SU_Login extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
 
         jButton1.setText("Login");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 80, 40));
 
         jButton2.setText("Back");
@@ -61,8 +75,8 @@ public class SU_Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 90, 40));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 260, 40));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 216, 260, 40));
+        jPanel1.add(jtxtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 260, 40));
+        jPanel1.add(jtxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 216, 260, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
@@ -71,7 +85,39 @@ public class SU_Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        LoginPage login=new LoginPage();
+        login.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String username=jtxtUsername.getText();
+        String password=jtxtPassword.getText();
+        try{
+            int log=1;
+            Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+            Statement st=(Statement)conn.createStatement();
+            ResultSet rs=st.executeQuery("SELECT * FROM SUser");
+            while (rs.next()){
+                if (rs.getString(1).equals(username) && rs.getString(2).equals(password)){
+                    log=0;
+                    break;
+                }
+            }
+            if (log==1){
+                JOptionPane.showMessageDialog(null, "Wrong password");
+            }
+            if (log==0){
+                SU_MainPage main=new SU_MainPage();
+                main.setVisible(true);
+                this.setVisible(false);
+            }
+        } catch (SQLException e){
+            Logger.getLogger(SU_Login.class.getName()).log(Level.SEVERE, null,e);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,7 +160,7 @@ public class SU_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jtxtPassword;
+    private javax.swing.JTextField jtxtUsername;
     // End of variables declaration//GEN-END:variables
 }
