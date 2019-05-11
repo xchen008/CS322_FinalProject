@@ -5,15 +5,12 @@
  */
 package ebaymazon;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -33,7 +30,7 @@ public class Purchase_Confirm extends javax.swing.JFrame {
     
     String str = "Title";
     String User = "User";
-    PreparedStatement st = null;
+    Statement st = null;
     PreparedStatement stmt = null;
     PreparedStatement stmt3 = null;
     ResultSet rs = null;
@@ -44,8 +41,9 @@ public class Purchase_Confirm extends javax.swing.JFrame {
         
         str = string;
         User = string2;
-        Item.setText(string);
+        Item.setText(str);
         this.setLocationRelativeTo(null);
+
         
     }
 
@@ -99,41 +97,44 @@ public class Purchase_Confirm extends javax.swing.JFrame {
 
     private void PurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PurchaseActionPerformed
         // TODO add your handling code here:
-        
 
-        
-        
         
 	Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         try
         {   
-            String sel = "SELECT * FROM Products WHERE Title = ?";
+            //String sel = "SELECT 'Title', 'Price', 'Seller' FROM Products WHERE Title = ?";
             Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
-            st = connect.prepareStatement(sel);
-            st.setString(1,str);
-            rs = st.executeQuery(sel);
-            rs.first();
+            st = (Statement) connect.createStatement();
+            rs = st.executeQuery("SELECT * FROM Products");
             
-            stmt= connect.prepareStatement("insert into PastProducts values (?,?,?,?,?)");
+            stmt= connect.prepareStatement("INSERT INTO PastProducts values (?,?,?,?,?)");
             stmt3 = connect.prepareStatement("DELETE FROM Products WHERE Title = ?");
             stmt3.setString(1, str);
             
-
+            while(rs.next())
+            {
+            
             String s1 = rs.getString("Title");
-            Float s2 = rs.getFloat("Price");
-            String s4 = rs.getString("Seller");
-            String s5 = sdf.format(date);
             
+            if(s1.equals(str))
+            {
+                Float s2 = rs.getFloat("Price");
+                String s4 = rs.getString("Seller");
+                String s5 = sdf.format(date);
+
+
+    //            System.out.print(s5);
+    //            st.executeUpdate();
+                stmt.setString(1, s1);
+                stmt.setFloat(2, s2);
+                stmt.setString(3, User);
+                stmt.setString(4, s4);
+                stmt.setString(5, s5);
+            }
+            }
             
-            
-            
-            stmt.setString(1, s1);
-            stmt.setFloat(2, s2);
-            stmt.setString(3, User);
-            stmt.setString(4, s4);
-            stmt.setString(5, s5);
             stmt.executeUpdate();
             stmt3.executeUpdate();
             JOptionPane.showMessageDialog(null, "Successfully Purchase!");
@@ -174,8 +175,11 @@ public class Purchase_Confirm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new Purchase_Confirm("Title","User").setVisible(true);
             }
         });
