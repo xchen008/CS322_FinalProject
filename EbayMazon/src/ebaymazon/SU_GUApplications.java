@@ -170,6 +170,7 @@ public class SU_GUApplications extends javax.swing.JFrame {
         setVisible(false);
         SU_MainPage goback = new SU_MainPage();
         goback.setVisible(true);
+
     }//GEN-LAST:event_back_to_mainActionPerformed
 
     /**
