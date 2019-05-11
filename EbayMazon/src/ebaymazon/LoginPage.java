@@ -240,6 +240,8 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void SUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SUActionPerformed
         // TODO add your handling code here:
+        SU_Login log=new SU_Login();
+        log.setVisible(true);
     }//GEN-LAST:event_SUActionPerformed
 
     private void SignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignupActionPerformed
