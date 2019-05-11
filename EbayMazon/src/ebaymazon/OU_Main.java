@@ -27,11 +27,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class OU_Main extends JFrame{
     
-    
-    /**
-     * Creates new form OU_Main
-     * 
-     */
     String str = new String("User");
     
     public OU_Main(String string) {
@@ -295,7 +290,8 @@ public class OU_Main extends JFrame{
     }//GEN-LAST:event_MyProductsActionPerformed
 
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
-        // TODO add your handling code here:
+        OU_Profile out = new OU_Profile(str);
+        out.setVisible(true);
     }//GEN-LAST:event_ProfileActionPerformed
 
     /**
