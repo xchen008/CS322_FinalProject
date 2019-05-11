@@ -27,7 +27,7 @@ public class SU_GUApplications extends javax.swing.JFrame {
         try {
             Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             Statement st=(Statement)conn.createStatement();
-            ResultSet rs=st.executeQuery("SELECT ")
+            ResultSet rs=st.executeQuery("SELECT * from ");
             
             
         }catch (SQLException ex){
