@@ -39,11 +39,10 @@ public class OU_Main extends JFrame{
         initComponents();
         
         str = string;
-        
-        Object[][] data = new Object[30][4];
-        
+                
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hi! "+ string, javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 36))); // NOI18N
         
+        Object[][] data = new Object[30][4];
         try
         {
             Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
