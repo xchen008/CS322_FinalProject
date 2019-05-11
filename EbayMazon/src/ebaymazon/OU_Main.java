@@ -283,7 +283,7 @@ public class OU_Main extends JFrame{
 
     private void TransationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransationActionPerformed
 
-        OU_Transaction out = new OU_Transaction();
+        OU_Transaction out = new OU_Transaction(str);
         out.setVisible(true);
     }//GEN-LAST:event_TransationActionPerformed
 
