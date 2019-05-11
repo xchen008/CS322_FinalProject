@@ -155,18 +155,24 @@
         </Component>
         <Component class="javax.swing.JToggleButton" name="Complains">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Complains"/>
+            <Property name="text" type="java.lang.String" value="Complaints"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JToggleButton" name="BlackList">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Black List"/>
+            <Property name="text" type="java.lang.String" value="Block List"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BlackListActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="Taboo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Taboo List"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TabooActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="Cancel">
           <Properties>

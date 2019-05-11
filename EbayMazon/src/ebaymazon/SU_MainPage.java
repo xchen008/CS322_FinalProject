@@ -57,11 +57,21 @@ public class SU_MainPage extends javax.swing.JFrame {
 
         BuyingTrans.setText("Buying Transactions");
 
-        Complains.setText("Complains");
+        Complains.setText("Complaints");
 
-        BlackList.setText("Black List");
+        BlackList.setText("Block List");
+        BlackList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BlackListActionPerformed(evt);
+            }
+        });
 
         Taboo.setText("Taboo List");
+        Taboo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TabooActionPerformed(evt);
+            }
+        });
 
         Cancel.setText("Cancel");
         Cancel.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +167,18 @@ public class SU_MainPage extends javax.swing.JFrame {
         LoginPage logout = new LoginPage();
         logout.setVisible(true);
     }//GEN-LAST:event_LogoutActionPerformed
+
+    private void TabooActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TabooActionPerformed
+        // TODO add your handling code here:
+        SU_TabooList fr = new SU_TabooList();
+        fr.setVisible(true);
+    }//GEN-LAST:event_TabooActionPerformed
+
+    private void BlackListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlackListActionPerformed
+        // TODO add your handling code here:
+        SU_BlockList fr = new SU_BlockList();
+        fr.setVisible(true);
+    }//GEN-LAST:event_BlackListActionPerformed
 
     /**
      * @param args the command line arguments
