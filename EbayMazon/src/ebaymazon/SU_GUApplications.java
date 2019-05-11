@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,8 +22,18 @@ public class SU_GUApplications extends javax.swing.JFrame {
     /**
      * Creates new form SU_GUApplications
      */
-    public SU_GUApplications() {
+    public SU_GUApplications(String string) {
         initComponents();
+        try {
+            Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+            Statement st=(Statement)conn.createStatement();
+            ResultSet rs=st.executeQuery("SELECT ")
+            
+            
+        }catch (SQLException ex){
+            
+        }
+        
     }
 
     /**
@@ -34,19 +45,29 @@ public class SU_GUApplications extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         back_to_main = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jtxtName = new javax.swing.JLabel();
+        jtxtAddress = new javax.swing.JLabel();
+        jtxtPhoneNumber = new javax.swing.JLabel();
+        jtxtCC = new javax.swing.JLabel();
+        jtxtUsername = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Applications", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 36))); // NOI18N
-        jPanel1.setMinimumSize(new java.awt.Dimension(1000, 800));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jPanel1.setMinimumSize(new java.awt.Dimension(600, 400));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -79,21 +100,48 @@ public class SU_GUApplications extends javax.swing.JFrame {
 
         jButton2.setText("Next");
 
+        jtxtName.setText("Name");
+
+        jtxtAddress.setText("Address");
+
+        jtxtPhoneNumber.setText("Phone Number");
+
+        jtxtCC.setText("Credit Card Number");
+
+        jtxtUsername.setText("Username");
+
+        jButton1.setText("Accept");
+
+        jButton3.setText("Reject");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(331, 331, 331)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(back_to_main)
+                            .addComponent(jtxtAddress)
+                            .addComponent(jtxtName)
+                            .addComponent(jtxtPhoneNumber)
+                            .addComponent(jtxtCC)
+                            .addComponent(jtxtUsername))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(331, 331, 331)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(back_to_main)
-                .addGap(294, 294, 294)
-                .addComponent(jButton2)
+                .addGap(203, 203, 203)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -103,11 +151,25 @@ public class SU_GUApplications extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(242, 242, 242)
+                .addGap(22, 22, 22)
+                .addComponent(jtxtName)
+                .addGap(27, 27, 27)
+                .addComponent(jtxtAddress)
+                .addGap(26, 26, 26)
+                .addComponent(jtxtPhoneNumber)
+                .addGap(27, 27, 27)
+                .addComponent(jtxtCC)
+                .addGap(28, 28, 28)
+                .addComponent(jtxtUsername)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(back_to_main)
                     .addComponent(jButton2))
-                .addContainerGap(451, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
@@ -159,9 +221,17 @@ public class SU_GUApplications extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back_to_main;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JLabel jtxtAddress;
+    private javax.swing.JLabel jtxtCC;
+    private javax.swing.JLabel jtxtName;
+    private javax.swing.JLabel jtxtPhoneNumber;
+    private javax.swing.JLabel jtxtUsername;
     // End of variables declaration//GEN-END:variables
 }
