@@ -100,6 +100,7 @@ public class SU_GUApplications extends javax.swing.JFrame {
         back_to_main = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         PTable = new javax.swing.JTable();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -161,6 +162,7 @@ public class SU_GUApplications extends javax.swing.JFrame {
         jScrollPane3.setViewportView(PTable);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 58, 567, 345));
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 460));
 
@@ -217,6 +219,7 @@ public class SU_GUApplications extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextPane jTextPane1;

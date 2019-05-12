@@ -17,6 +17,7 @@ public class Friends extends javax.swing.JFrame {
     public Friends() {
         initComponents();
         
+        
     }
 
     /**
