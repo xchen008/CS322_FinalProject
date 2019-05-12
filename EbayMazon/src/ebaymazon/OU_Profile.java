@@ -19,6 +19,8 @@ import java.util.logging.Logger;
  * @author Janice
  */
 public class OU_Profile extends javax.swing.JFrame {
+    
+    
     String str = new String("User");
 
     public OU_Profile(String string) {
