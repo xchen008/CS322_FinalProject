@@ -8,6 +8,8 @@ package ebaymazon;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,7 +51,6 @@ public class Application_User extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Application_User with Database");
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
         setSize(new java.awt.Dimension(600, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -83,7 +84,21 @@ public class Application_User extends javax.swing.JFrame {
             }
         });
 
+        jtxtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtUserNameKeyTyped(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtxtUserNameKeyReleased(evt);
+            }
+        });
+
         btn_cancel.setText("Cancel");
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,26 +190,78 @@ public class Application_User extends javax.swing.JFrame {
         Connection conn=null;
         PreparedStatement pstmt=null;
         try{
-            //Class.forName("com.mysql.jdbc.Driver");
             conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+            Statement st=(Statement)conn.createStatement();
+            ResultSet rs=st.executeQuery("SELECT username FROM User");
             pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
-            pstmt.setString(1, name);
-            pstmt.setString(2, address);
-            pstmt.setString(3, phonenumber);
-            pstmt.setString(4, credit_card);
-            pstmt.setString(5, username);
-            int i=pstmt.executeUpdate();
-            if (i>0){
-                JOptionPane.showMessageDialog(null, "Data is saved!");
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Data is not saved!");
-            }
+            while (rs.first())
+                if (rs.getString(1).equals(username)){
+                    JOptionPane.showMessageDialog(null, "Application cannot be sent!");
+                    break;
+                }
+                else {
+                    pstmt.setString(1, name);
+                    pstmt.setString(2, address);
+                    pstmt.setString(3, phonenumber);
+                    pstmt.setString(4, credit_card);
+                    pstmt.setString(5, username);
+                    int i=pstmt.executeUpdate();
+                    if (i>0){
+                        JOptionPane.showMessageDialog(null, "Application is sent!");
+                        break;
+                    }
+                }
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+          JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_btn_submitActionPerformed
+
+    private void jtxtUserNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtUserNameKeyReleased
+        // TODO add your handling code here:
+       /*String username=jtxtUserName.getText();
+        try{
+        Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+        PreparedStatement pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
+        Statement st=(Statement)conn.createStatement();
+            ResultSet rs=st.executeQuery("SELECT username FROM User");
+            int i=pstmt.executeUpdate();
+            while (rs.next()){
+                if (rs.getString(1).equals(username)){
+                    JOptionPane.showMessageDialog(null, "Application cannot be sent!");
+                    btn_submit.setVisible(false);
+                }
+            }
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null, e);
+        }*/
+    }//GEN-LAST:event_jtxtUserNameKeyReleased
+
+    private void jtxtUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtUserNameKeyTyped
+        // TODO add your handling code here:
+        /*String username=jtxtUserName.getText();
+        try{
+        Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+        PreparedStatement pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
+        Statement st=(Statement)conn.createStatement();
+            ResultSet rs=st.executeQuery("SELECT username FROM User");
+            int i=pstmt.executeUpdate();
+            while (rs.next()){
+                if (rs.getString(1).equals(username)){
+                    JOptionPane.showMessageDialog(null, "Application cannot be sent!");
+                    btn_submit.setVisible(false);
+                }
+            }
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null, e);
+        }*/
+    }//GEN-LAST:event_jtxtUserNameKeyTyped
+
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        // TODO add your handling code here:
+        LoginPage login=new LoginPage();
+        login.setVisible(true);
+    }//GEN-LAST:event_btn_cancelActionPerformed
                                        
 
 
