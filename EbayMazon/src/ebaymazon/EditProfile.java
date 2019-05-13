@@ -129,7 +129,7 @@ public class EditProfile extends javax.swing.JFrame {
             PreparedStatement st = null;
             String word = Info.getText();
 
-            
+      
             if(direction == 1)
                     st = connect.prepareStatement("UPDATE User SET password = ? WHERE username = ?"); 
             

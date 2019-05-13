@@ -39,10 +39,10 @@ public class SU_Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Login = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
         jtxtUsername = new javax.swing.JTextField();
-        jtxtPassword = new javax.swing.JTextField();
+        jtxtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
@@ -61,37 +61,37 @@ public class SU_Login extends javax.swing.JFrame {
         jLabel2.setText("Password");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Login.setText("Login");
+        Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 80, 40));
+        jPanel1.add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 80, 40));
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Back.setText("Back");
+        Back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BackActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 90, 40));
+        jPanel1.add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 90, 40));
         jPanel1.add(jtxtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 260, 40));
-        jPanel1.add(jtxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 216, 260, 40));
+        jPanel1.add(jtxtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 260, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         // TODO add your handling code here:
         LoginPage login=new LoginPage();
         login.setVisible(true);
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BackActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
         String username=jtxtUsername.getText();
         String password=jtxtPassword.getText();
@@ -118,7 +118,7 @@ public class SU_Login extends javax.swing.JFrame {
             Logger.getLogger(SU_Login.class.getName()).log(Level.SEVERE, null,e);
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,12 +156,12 @@ public class SU_Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Back;
+    private javax.swing.JButton Login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jtxtPassword;
+    private javax.swing.JPasswordField jtxtPassword;
     private javax.swing.JTextField jtxtUsername;
     // End of variables declaration//GEN-END:variables
 }
