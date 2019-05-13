@@ -193,9 +193,11 @@ public class Application_User extends javax.swing.JFrame {
             conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             Statement st=(Statement)conn.createStatement();
             ResultSet rs=st.executeQuery("SELECT username FROM User");
+            Statement bt=(Statement)conn.createStatement();
+            ResultSet bs=bt.executeQuery("SELECT username FROM BlockList");
             pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
-            while (rs.first())
-                if (rs.getString(1).equals(username)){
+            while (rs.first() | bs.first()) {
+                if (rs.getString(1).equals(username) | bs.getString(1).equals(username)){
                     JOptionPane.showMessageDialog(null, "Application cannot be sent!");
                     break;
                 }
@@ -211,6 +213,7 @@ public class Application_User extends javax.swing.JFrame {
                         break;
                     }
                 }
+            }
         }
         catch(Exception e){
           JOptionPane.showMessageDialog(null, "Error");
