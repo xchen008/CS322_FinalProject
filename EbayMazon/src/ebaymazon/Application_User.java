@@ -5,13 +5,23 @@
  */
 package ebaymazon;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 /**
  *
  * @author anjanarajan
@@ -189,19 +199,34 @@ public class Application_User extends javax.swing.JFrame {
         String username=jtxtUserName.getText();
         Connection conn=null;
         PreparedStatement pstmt=null;
+        int track = 0;
         try{
             conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             Statement st=(Statement)conn.createStatement();
-            ResultSet rs=st.executeQuery("SELECT username FROM User");
+            ResultSet rs=st.executeQuery("SELECT * FROM User");
             Statement bt=(Statement)conn.createStatement();
-            ResultSet bs=bt.executeQuery("SELECT username FROM BlockList");
+            ResultSet bs=bt.executeQuery("SELECT * FROM BlockList");
+            
             pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
-            while (rs.first() | bs.first()) {
-                if (rs.getString(1).equals(username) | bs.getString(1).equals(username)){
+            while(rs.next()) {
+              
+                if (username.equals(rs.getString("username"))){
                     JOptionPane.showMessageDialog(null, "Application cannot be sent!");
-                    break;
+                    track = 1;
+                    
                 }
-                else {
+                
+            }
+             while(bs.next()) {
+              
+                if (username.equals(bs.getString("username"))){
+                    JOptionPane.showMessageDialog(null, "Application cannot be sent!");
+                    track = 1;
+                    
+                }
+                
+            }
+            if(track == 0){
                     pstmt.setString(1, name);
                     pstmt.setString(2, address);
                     pstmt.setString(3, phonenumber);
@@ -210,54 +235,24 @@ public class Application_User extends javax.swing.JFrame {
                     int i=pstmt.executeUpdate();
                     if (i>0){
                         JOptionPane.showMessageDialog(null, "Application is sent!");
-                        break;
+
                     }
-                }
             }
+            
         }
-        catch(Exception e){
+        catch(SQLException e){
           JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_btn_submitActionPerformed
 
     private void jtxtUserNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtUserNameKeyReleased
         // TODO add your handling code here:
-       /*String username=jtxtUserName.getText();
-        try{
-        Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
-        PreparedStatement pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
-        Statement st=(Statement)conn.createStatement();
-            ResultSet rs=st.executeQuery("SELECT username FROM User");
-            int i=pstmt.executeUpdate();
-            while (rs.next()){
-                if (rs.getString(1).equals(username)){
-                    JOptionPane.showMessageDialog(null, "Application cannot be sent!");
-                    btn_submit.setVisible(false);
-                }
-            }
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null, e);
-        }*/
+       
     }//GEN-LAST:event_jtxtUserNameKeyReleased
 
     private void jtxtUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtUserNameKeyTyped
         // TODO add your handling code here:
-        /*String username=jtxtUserName.getText();
-        try{
-        Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
-        PreparedStatement pstmt=conn.prepareStatement("insert into User_Application values (?,?,?,?,?)");
-        Statement st=(Statement)conn.createStatement();
-            ResultSet rs=st.executeQuery("SELECT username FROM User");
-            int i=pstmt.executeUpdate();
-            while (rs.next()){
-                if (rs.getString(1).equals(username)){
-                    JOptionPane.showMessageDialog(null, "Application cannot be sent!");
-                    btn_submit.setVisible(false);
-                }
-            }
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null, e);
-        }*/
+       
     }//GEN-LAST:event_jtxtUserNameKeyTyped
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
