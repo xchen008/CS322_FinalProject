@@ -19,7 +19,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -29,13 +31,8 @@ public class OU_Main extends JFrame{
     
     String str = new String("User");
     
-    public OU_Main(String string) {
-
-        initComponents();
-        
-        str = string;
-                
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hi! "+ string, javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 36))); // NOI18N
+    public  void displaytable(){
+   
         
         Object[][] data = new Object[30][4];
         try
@@ -48,7 +45,7 @@ public class OU_Main extends JFrame{
             while(rs.next())
             {
                 data[i][0] = rs.getString("Title");
-                data[i][1] = rs.getBytes("Image");
+                data[i][1] = rs.getString("Keyword");
                 data[i][2] = rs.getFloat(3);
                 data[i][3] = rs.getString(5);
                 i++;
@@ -62,7 +59,7 @@ public class OU_Main extends JFrame{
             
         PTable.setModel(new javax.swing.table.DefaultTableModel(data,
             new String [] {
-                "Title", "Image", "Price","Seller"
+                "Title", "Keyword", "Price","Seller"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -84,6 +81,22 @@ public class OU_Main extends JFrame{
                 
         }
         });
+    
+        
+    
+    }
+    
+    
+    public OU_Main(String string) {
+
+        initComponents();
+        
+        str = string;
+                
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hi! "+ string, javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 36))); // NOI18N
+        
+        displaytable();
+        
     }
 
     /**
@@ -134,6 +147,11 @@ public class OU_Main extends JFrame{
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         Search.setText("Search ->");
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recommand \nProducts", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
@@ -292,6 +310,27 @@ public class OU_Main extends JFrame{
         OU_Profile out = new OU_Profile(str);
         out.setVisible(true);
     }//GEN-LAST:event_ProfileActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // TODO add your handling code here:
+        
+        String search=Searchbar.getText();
+        DefaultTableModel table=(DefaultTableModel)PTable.getModel();
+        TableRowSorter<DefaultTableModel> trow=new TableRowSorter<DefaultTableModel>(table);
+        
+        if(search.equals("all") || search.equals("everything"))
+        {
+            PTable.setRowSorter(trow);
+            trow.setRowFilter(RowFilter.regexFilter(""));
+        }
+        
+        else
+        {
+            
+            PTable.setRowSorter(trow);
+            trow.setRowFilter(RowFilter.regexFilter(search));
+        }
+    }//GEN-LAST:event_SearchActionPerformed
 
     /**
      * @param args the command line arguments
