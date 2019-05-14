@@ -187,7 +187,7 @@ public class SU_MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_NewUsersAppActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        System.exit(0);
+        this.setVisible(false);
     }//GEN-LAST:event_CancelActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
@@ -215,7 +215,8 @@ public class SU_MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_AvaliableItemsActionPerformed
 
     private void NewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewItemActionPerformed
-        // TODO add your handling code here:
+        SU_NewItemInfo iteminfo = new SU_NewItemInfo();
+        iteminfo.setVisible(true);
     }//GEN-LAST:event_NewItemActionPerformed
 
     private void ComplainsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComplainsActionPerformed
