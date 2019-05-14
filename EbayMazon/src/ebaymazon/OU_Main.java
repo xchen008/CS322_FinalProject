@@ -34,12 +34,13 @@ public class OU_Main extends JFrame{
     public  void displaytable(){
    
         
-        Object[][] data = new Object[30][4];
+        Object[][] data = new Object[30][6];
         try
         {
             Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             Statement st = (Statement)connect.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Products");
+            rs = st.executeQuery("SELECT * FROM Products");
+
             
             int i = 0;
             while(rs.next())
@@ -47,9 +48,34 @@ public class OU_Main extends JFrame{
                 data[i][0] = rs.getString("Title");
                 data[i][1] = rs.getString("Keyword");
                 data[i][2] = rs.getFloat(3);
-                data[i][3] = rs.getString(5);
+                data[i][3] = rs.getString("Seller");
+                if(rs.getBoolean("bid"))
+                    data[i][5] = "Yes";
+                else
+                    data[i][5] = "No";
                 i++;
+
             }
+            
+            
+            Statement st2 = (Statement)connect.createStatement();
+            rs2 = st.executeQuery("SELECT * FROM User");
+            
+            double rating = 0.0;
+            int b = 0;
+            
+            while(rs2.next())
+            {   
+                for(int a = 0; a < i; a++)
+                {
+                    if(rs2.getString("username").equals(data[a][3]))
+                    {
+                        rating = rs2.getDouble("rating");
+                        data[b++][4] = rating;
+                    }
+                }
+            }
+                
             
             
         } catch (SQLException ex) {
@@ -59,7 +85,7 @@ public class OU_Main extends JFrame{
             
         PTable.setModel(new javax.swing.table.DefaultTableModel(data,
             new String [] {
-                "Title", "Keyword", "Price","Seller"
+                "Title", "Keyword", "Price","Seller", "Rating", "bid status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -86,6 +112,9 @@ public class OU_Main extends JFrame{
     
     }
     
+    
+    ResultSet rs = null;
+    ResultSet rs2 = null;
     
     public OU_Main(String string) {
 
@@ -114,7 +143,6 @@ public class OU_Main extends JFrame{
         jPanel1 = new javax.swing.JPanel();
         Searchbar = new javax.swing.JTextField();
         Search = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
         Profile = new javax.swing.JToggleButton();
         MyProducts = new javax.swing.JToggleButton();
         Prod_Panel = new javax.swing.JPanel();
@@ -153,19 +181,6 @@ public class OU_Main extends JFrame{
             }
         });
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recommand \nProducts", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         Profile.setText("Profile");
         Profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +195,7 @@ public class OU_Main extends JFrame{
             }
         });
 
-        Prod_Panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Products", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        Prod_Panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
 
         PTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,11 +228,11 @@ public class OU_Main extends JFrame{
         Prod_Panel.setLayout(Prod_PanelLayout);
         Prod_PanelLayout.setHorizontalGroup(
             Prod_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
         Prod_PanelLayout.setVerticalGroup(
             Prod_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
         );
 
         Transation.setText("Transaction");
@@ -238,45 +253,38 @@ public class OU_Main extends JFrame{
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Prod_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Profile, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(MyProducts)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Transation, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(Prod_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(47, Short.MAX_VALUE))))
+                        .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Profile)
                     .addComponent(MyProducts)
-                    .addComponent(Searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Transation)
                     .addComponent(Search)
-                    .addComponent(Logout)
-                    .addComponent(Transation))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Prod_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(Searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Logout))
+                .addGap(30, 30, 30)
+                .addComponent(Prod_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
@@ -381,7 +389,6 @@ public class OU_Main extends JFrame{
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
