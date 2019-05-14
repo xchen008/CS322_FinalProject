@@ -5,6 +5,8 @@
  */
 package ebaymazon;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -25,6 +27,7 @@ public class OU_Products extends javax.swing.JFrame {
      */
     public OU_Products(String str) {
         initComponents();
+        this.setLocationRelativeTo(null);
         
         Object[][] data = new Object[30][4];
         
@@ -41,9 +44,12 @@ public class OU_Products extends javax.swing.JFrame {
                 if(str.equals(rs.getString(5)))
                 {
                 data[i][0] = rs.getString("Title");
-                data[i][1] = rs.getBytes("Image");
+                data[i][1] = rs.getString("Keyword");
                 data[i][2] = rs.getFloat(3);
-                data[i][3] = rs.getString(4);
+                if(rs.getBoolean("bid"))
+                    data[i][3] = "Yes";
+                else
+                    data[i][3] = "No";
                 i++;
                 }
             }
@@ -56,7 +62,7 @@ public class OU_Products extends javax.swing.JFrame {
             
         PTable.setModel(new javax.swing.table.DefaultTableModel( data,
             new String [] {
-                "Title", "Image", "Price","Keyword"
+                "Title", "Keyword", "Price", "Bid status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -68,6 +74,21 @@ public class OU_Products extends javax.swing.JFrame {
             }
         });
 
+        PTable.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+        int row = PTable.getSelectedRow();
+        ProductHandler fr;
+        
+        if(data[row][3].equals("Yes"))
+            fr = new ProductHandler(data[row][0].toString(),str,true);
+        else
+            fr = new ProductHandler(data[row][0].toString(),str,false);
+        
+        fr.setVisible(true);
+                
+        }
+        });
+        
     }
 
     /**

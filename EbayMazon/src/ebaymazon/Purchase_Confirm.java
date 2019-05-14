@@ -113,8 +113,9 @@ public class Purchase_Confirm extends javax.swing.JFrame {
             rs = st.executeQuery("SELECT * FROM Products");
             
             stmt= connect.prepareStatement("INSERT INTO PastProducts values (?,?,?,?,?,?)");
-            stmt3 = connect.prepareStatement("DELETE FROM Products WHERE Title = ?");
+            stmt3 = connect.prepareStatement("DELETE FROM Products WHERE Title = ? AND Seller = ?");
             stmt3.setString(1, str);
+            stmt3.setString(2,User);
             
             while(rs.next())
             {
