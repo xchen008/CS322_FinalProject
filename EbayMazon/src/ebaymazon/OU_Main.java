@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -70,8 +71,10 @@ public class OU_Main extends JFrame{
                 {
                     if(rs2.getString("username").equals(data[a][3]))
                     {
+
                         rating = rs2.getDouble("rating");
-                        data[a][4] = rating;
+                        DecimalFormat df = new DecimalFormat("#.##");
+                        data[a][4] = df.format(rating);
                     }
                 }
             }

@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Formatter;
 
@@ -38,7 +39,8 @@ public class OU_Profile extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery();
             rs.next();
             
-            rate.setText(String.format("Your rating is: %.2f",rs.getDouble("rating")));
+            DecimalFormat df = new DecimalFormat("#.##");
+            rate.setText(String.format("Your rating is: " + df.format(rs.getDouble("rating"))));
             username.setText(rs.getString("username"));
             address.setText(rs.getString("Address"));
             phonenumber.setText(rs.getString("PhoneNumber"));
