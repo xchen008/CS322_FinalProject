@@ -62,7 +62,7 @@ public class OU_Main extends JFrame{
             rs2 = st.executeQuery("SELECT * FROM User");
             
             double rating = 0.0;
-            int b = 0;
+
             
             while(rs2.next())
             {   
@@ -71,7 +71,7 @@ public class OU_Main extends JFrame{
                     if(rs2.getString("username").equals(data[a][3]))
                     {
                         rating = rs2.getDouble("rating");
-                        data[b++][4] = rating;
+                        data[a][4] = rating;
                     }
                 }
             }

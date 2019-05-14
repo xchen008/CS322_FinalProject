@@ -33,7 +33,7 @@ public class OU_Transaction extends javax.swing.JFrame {
     public OU_Transaction(String user){
         
         initComponents();
-        Object[][] data = new Object[30][4];
+        Object[][] data = new Object[30][5];
         
         try
         {
@@ -51,6 +51,7 @@ public class OU_Transaction extends javax.swing.JFrame {
                     data[i][1] = rs.getString("Title");
                     data[i][2] = rs.getFloat("Price");
                     data[i][3] = rs.getString("Seller");
+                    data[i][4] = rs.getString("rated");
                     i++;
                 }
                 
@@ -60,6 +61,7 @@ public class OU_Transaction extends javax.swing.JFrame {
                     data[i][1] = rs.getString("Title");
                     data[i][2] = rs.getFloat("Price");
                     data[i][3] = rs.getString("Buyer");
+                    data[i][4] = rs.getString("rated");
                     i++;
                 } 
                 
@@ -74,7 +76,7 @@ public class OU_Transaction extends javax.swing.JFrame {
             
         PTable.setModel(new javax.swing.table.DefaultTableModel(data,
             new String [] {
-               "Bought/Sold", "Title", "Price","Seller/Buyer"
+               "Bought/Sold", "Title", "Price","Seller/Buyer","rating"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -86,6 +88,20 @@ public class OU_Transaction extends javax.swing.JFrame {
             }
         });
         
+        PTable.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+        int row = PTable.getSelectedRow();
+        
+        
+        if(data[row][0].equals("Bought") && (data[row][4].equals("0")))
+        {
+            OU_Rate fr;
+            fr = new OU_Rate(data[row][3].toString(),data[row][1].toString());
+            fr.setVisible(true);
+        }
+        
+        }
+        });
         
         
     }
