@@ -16,6 +16,10 @@ public class EbayMazon {
      */
     public static void main(String[] args) {
 
+            double fval = 202.93;
+            double n = fval % 100;
+            System.out.printf("this is a number: %f\n", n);
+            
 
         
     }
