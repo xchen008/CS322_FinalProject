@@ -31,6 +31,10 @@ import javax.swing.table.TableRowSorter;
 public class OU_Main extends JFrame{
     
     String str = new String("User");
+
+    OU_Main() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public  void displaytable(){
    

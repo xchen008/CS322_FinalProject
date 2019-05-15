@@ -207,9 +207,12 @@ public class LoginPage extends javax.swing.JFrame {
 
         try {
             int log = 1;
+            int sets=1;   //made this change
             Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York", "csc322", "comp2020");
             Statement st = (Statement) connect.createStatement();
+            Statement qt= (Statement) connect.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM User");
+            ResultSet qs = qt.executeQuery("SELECT * FROM Complaint"); //made this change
 
             while (rs.next()) {
                 if (rs.getString(1).equals(Username) && rs.getString(2).equals(Password)) {
@@ -217,7 +220,17 @@ public class LoginPage extends javax.swing.JFrame {
                     break;
                 }
             }
-
+             while (qs.next()){  //this works cuz pop up only appears for people that got a complaint
+                if (qs.getString(2).equals(Username)){
+                    sets=0;
+                    break;
+                }
+            }
+            if (sets == 0){ //this works cuz pop up only appears for people that got a complaint
+                ComplaintJustification justify=new ComplaintJustification();
+                justify.setVisible(true);
+                this.setVisible(false);
+            }
             if (log == 1) {
                 JOptionPane.showMessageDialog(null, "Wrong password");
             }
@@ -231,7 +244,7 @@ public class LoginPage extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }//GEN-LAST:event_LoginActionPerformed
 
     private void GUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GUActionPerformed

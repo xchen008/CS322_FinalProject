@@ -144,9 +144,10 @@ public class App_Confirm extends javax.swing.JFrame {
             Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             st = (Statement) connect.createStatement();
             rs = st.executeQuery("SELECT * FROM User_Application");
-            stmt= connect.prepareStatement("INSERT INTO User values (?,?,?,?,?)");
+            stmt= connect.prepareStatement("INSERT INTO User values (?,?,?,?,?,?,?,?,?)"); //trying to get other columns
             stmt3 = connect.prepareStatement("DELETE FROM User_Application WHERE Name = ?");
             stmt3.setString(1, user);
+            
             
             while(rs.next())
             {
@@ -157,10 +158,13 @@ public class App_Confirm extends javax.swing.JFrame {
                     stmt.setString(3, rs.getString("Address"));
                     stmt.setString(4, rs.getString("Phone Number"));
                     stmt.setString(5, rs.getString("Credit Card"));
+                    stmt.setDouble(6, 0.0); //for rating
+                    stmt.setInt(7, 0);   //# of rating
+                    stmt.setInt(8, 0); //# of warning
+                    stmt.setInt(9, 0); //# of complaints which needs to get fixed
                 }
             
             }
-            
             stmt.executeUpdate();
             stmt3.executeUpdate();
 

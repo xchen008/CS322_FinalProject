@@ -16,6 +16,7 @@ public class SU_OUList extends javax.swing.JFrame {
      */
     public SU_OUList() {
         initComponents();
+        
     }
 
     /**
@@ -27,31 +28,32 @@ public class SU_OUList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        UserTable = new javax.swing.JTable();
+        PTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SUou_list");
-        setPreferredSize(new java.awt.Dimension(539, 387));
         setSize(new java.awt.Dimension(539, 387));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Ordinary Users", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 36))); // NOI18N
 
-        UserTable.setModel(new javax.swing.table.DefaultTableModel(
+        PTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Username", "Rating", "Number of Warnings"
+                "Username", "Rating", "Number of Ratings", "Number of Warnings"
             }
         ));
-        jScrollPane1.setViewportView(UserTable);
+        jScrollPane1.setViewportView(PTable);
 
         btnBack.setText("Back");
 
@@ -120,9 +122,11 @@ public class SU_OUList extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable UserTable;
+    private javax.swing.JTable PTable;
     private javax.swing.JButton btnBack;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
