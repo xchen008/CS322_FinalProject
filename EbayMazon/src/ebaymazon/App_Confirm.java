@@ -153,8 +153,8 @@ public class App_Confirm extends javax.swing.JFrame {
             {
                 if(user.equals(rs.getString("Name")))
                 {
-                    stmt.setString(1, rs.getString("Name"));
-                    stmt.setString(2, rs.getString("Name"));
+                    stmt.setString(1, rs.getString("Username"));
+                    stmt.setString(2, rs.getString("Username"));
                     stmt.setString(3, rs.getString("Address"));
                     stmt.setString(4, rs.getString("Phone Number"));
                     stmt.setString(5, rs.getString("Credit Card"));

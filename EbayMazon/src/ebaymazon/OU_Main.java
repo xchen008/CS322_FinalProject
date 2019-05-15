@@ -108,9 +108,18 @@ public class OU_Main extends JFrame{
         PTable.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
         int row = PTable.getSelectedRow();
+        if(data[row][5].equals("No")){
         Purchase_Confirm fr;
         fr = new Purchase_Confirm(data[row][0].toString(),str);
-        fr.setVisible(true);
+        fr.setVisible(true)
+        ;}
+        
+        else
+        {
+            Enter_Bid fr = new Enter_Bid(data[row][0].toString(),data[row][3].toString(),str);
+            fr.setVisible(true);
+ 
+        }
                 
         }
         });

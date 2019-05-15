@@ -132,6 +132,7 @@ public class ProductHandler extends javax.swing.JFrame {
         // TODO add your handling code here:
         OU_allOffer fr = new OU_allOffer(title,user);
         fr.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_offerActionPerformed
 
     private void rmvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvActionPerformed

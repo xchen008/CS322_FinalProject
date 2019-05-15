@@ -5,6 +5,18 @@
  */
 package ebaymazon;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author XueruChen
@@ -14,9 +26,16 @@ public class Enter_Bid extends javax.swing.JFrame {
     /**
      * Creates new form Enter_Bid
      */
-    public Enter_Bid() {
+    String title;
+    String user;
+    String seller;
+    public Enter_Bid(String str,String str2,String str3) {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        title = str;
+        seller = str2;
+        user = str3;
     }
 
     /**
@@ -39,8 +58,18 @@ public class Enter_Bid extends javax.swing.JFrame {
         jLabel1.setText("What is your offer for this product? ");
 
         Submit.setText("Submit");
+        Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitActionPerformed(evt);
+            }
+        });
 
         Close.setText("Close");
+        Close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +108,37 @@ public class Enter_Bid extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_CloseActionPerformed
+
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+        // TODO add your handling code here:
+         try
+        {   
+            //String sel = "SELECT 'Title', 'Price', 'Seller' FROM Products WHERE Title = ?";
+            Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+            PreparedStatement stmt= connect.prepareStatement("INSERT INTO Bidding values (?,?,?,?)");
+            
+                stmt.setString(1, user);
+                stmt.setString(2, seller);
+                stmt.setString(3, title);
+                double Offer = Double.parseDouble(offer.getText());
+                stmt.setDouble(4, Offer);
+            
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Offer submitted!");
+            this.setVisible(false);
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_SubmitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -109,7 +169,7 @@ public class Enter_Bid extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Enter_Bid().setVisible(true);
+                new Enter_Bid(" "," "," ").setVisible(true);
             }
         });
     }
