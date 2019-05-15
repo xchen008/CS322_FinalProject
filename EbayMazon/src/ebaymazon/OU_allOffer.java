@@ -30,9 +30,73 @@ public class OU_allOffer extends javax.swing.JFrame {
     /**
      * Creates new form OU_allOffer
      */
+    String user = null;
+    String title = null;
+    
     public OU_allOffer(String Title, String User) {
+        
+        user = User;
+        title = Title;
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        Object[][] data = new Object[15][2];
+        try
+        {
+            Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
+            Statement st = (Statement)connect.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM Bidding");
+
+            
+            int i = 0;
+            while(rs.next())
+            {
+                if(rs.getString("Seller").equals(User) && rs.getString("Title").equals(Title)){
+                data[i][0] = rs.getString("Buyer");
+                data[i][1] = rs.getString("Bid");
+                i++;
+                }
+            }
+            
+            
+            Statement st2 = (Statement)connect.createStatement();
+            
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+        PTable.setModel(new javax.swing.table.DefaultTableModel(data,
+            new String [] {
+                "Buyer", "Offer"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        
+        
+        PTable.addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e) {
+        int row = PTable.getSelectedRow();
+        
+        Sell_Product fr;
+        Double Offer = new Double(data[row][1].toString());
+        fr = new Sell_Product(user, title, data[row][0].toString(), Offer);
+        fr.setVisible(true);
+        
+        }
+
+        });
+    
     }
 
     /**
@@ -45,13 +109,13 @@ public class OU_allOffer extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -62,7 +126,7 @@ public class OU_allOffer extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(PTable);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         jLabel1.setText("Following are all offers for this item");
@@ -149,9 +213,9 @@ public class OU_allOffer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable PTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
