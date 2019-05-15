@@ -16,6 +16,7 @@ public class SU_BuyingTransaction extends javax.swing.JFrame {
      */
     public SU_BuyingTransaction() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

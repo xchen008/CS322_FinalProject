@@ -25,6 +25,7 @@ public class SU_Login extends javax.swing.JFrame {
      */
     public SU_Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

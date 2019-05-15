@@ -16,7 +16,7 @@ public class Friends extends javax.swing.JFrame {
      */
     public Friends() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         
     }
 

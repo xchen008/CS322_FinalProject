@@ -30,6 +30,7 @@ public class GU_MainPage extends javax.swing.JFrame {
      */
     public GU_MainPage() {
         initComponents();
+        this.setLocationRelativeTo(null);
         //str=string;
         Object[][] data=new Object[30][5];
         try {

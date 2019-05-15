@@ -25,14 +25,22 @@ public class ComplaintJustification extends javax.swing.JFrame {
     /**
      * Creates new form ComplaintJustification
      */
-    public ComplaintJustification() {
+ String seller;
+ String buyer;
+ 
+    public ComplaintJustification(String string) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        seller = string;
+
             try {
+            
             Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
-            PreparedStatement pstmt = connect.prepareStatement("SELECT Buyer, Complaint FROM Complaint WHERE Seller = ?");
+            PreparedStatement pstmt = connect.prepareStatement("SELECT Buyer, Complaints FROM Complaint WHERE Seller = ?");
+            pstmt.setString(1, string);
             ResultSet rs= pstmt.executeQuery();
             rs.next();
-            
+            buyer = rs.getString("Buyer");
             jlabelComplainer.setText(rs.getString("Buyer")); //not printing the the specified values from column onto form
             jlabelComplaint.setText(rs.getString("Complaints")); //tried to follow code for edit profile
         } catch (SQLException ex) {
@@ -165,16 +173,22 @@ public class ComplaintJustification extends javax.swing.JFrame {
             String justification=Text_Justification.getText();
             try {
             connect=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
-            pstmt=connect.prepareStatement("insert into Complaint(Justification) values (?) WHERE Seller = ?"); //not inserting just justification into column
+            pstmt=connect.prepareStatement("UPDATE Complaint SET Justification = ? WHERE Seller = ? AND Buyer = ?"); 
             
-            pstmt.setString(4, justification);
+            pstmt.setString(1, justification);
+            pstmt.setString(2, seller);
+            pstmt.setString(3, buyer);
+            
             int i=pstmt.executeUpdate();
+            
             if (i>0){
-                JOptionPane.showMessageDialog(null, "Complaint submitted!");
+                JOptionPane.showMessageDialog(null, "Justification submitted!");
             }
+            
             else {
-                JOptionPane.showMessageDialog(null, "Complaint cannot be submitted!");
+                JOptionPane.showMessageDialog(null, "Justification cannot be submitted!");
             }
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error2");
         }
@@ -214,7 +228,7 @@ public class ComplaintJustification extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ComplaintJustification().setVisible(true);
+                new ComplaintJustification("").setVisible(true);
             }
         });
     }

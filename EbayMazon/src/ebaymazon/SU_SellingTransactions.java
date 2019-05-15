@@ -24,6 +24,7 @@ public class SU_SellingTransactions extends javax.swing.JFrame {
      */
     public SU_SellingTransactions() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Object[][] data = new Object[30][5];
         
         try

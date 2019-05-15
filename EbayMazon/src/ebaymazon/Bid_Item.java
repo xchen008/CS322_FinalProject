@@ -16,6 +16,7 @@ public class Bid_Item extends javax.swing.JFrame {
      */
     public Bid_Item() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

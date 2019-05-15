@@ -8,6 +8,7 @@ public class SU_MainPage extends javax.swing.JFrame {
      */
     public SU_MainPage() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -197,6 +198,8 @@ public class SU_MainPage extends javax.swing.JFrame {
 
     private void AvaliableItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaliableItemsActionPerformed
         // TODO add your handling code here:
+        GU_MainPage main=new GU_MainPage();
+        main.setVisible(true);
     }//GEN-LAST:event_AvaliableItemsActionPerformed
 
     private void NewItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewItemActionPerformed

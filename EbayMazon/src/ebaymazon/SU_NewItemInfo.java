@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -19,7 +20,8 @@ public class SU_NewItemInfo extends javax.swing.JFrame {
     
     public SU_NewItemInfo() {
         initComponents();
-        Object[][] data=new Object[30][5];
+        this.setLocationRelativeTo(null);
+        Object[][] data=new Object[30][6];
         try {
             Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");
             Statement st=(Statement)conn.createStatement();
@@ -35,6 +37,10 @@ public class SU_NewItemInfo extends javax.swing.JFrame {
                     data[i][2]="No";
                 data[i][3]=rs.getString("Keywords");
                 data[i][4]=rs.getString("Seller");
+                if(rs.getBoolean("Accepted"))
+                    data[i][5]= "Yes";
+                else
+                    data[i][5]="No";
                 i++;
             }
         }catch(SQLException e){
@@ -42,7 +48,7 @@ public class SU_NewItemInfo extends javax.swing.JFrame {
         }
         PTable.setModel(new javax.swing.table.DefaultTableModel(data, 
                 new String[] {
-                    "Title", "Price", "Bidding", "Keywords" , "Seller"
+                    "Title", "Price", "Bidding", "Keywords" , "Seller", "Accepted"
         }
         ) {
             boolean[] canEdit=new boolean[]{
@@ -78,16 +84,31 @@ public class SU_NewItemInfo extends javax.swing.JFrame {
 
         PTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title", "Price", "Bidding", "Keywords", "Seller"
+                "Title", "Price", "Bidding", "Keywords", "Seller", "Accept"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        PTable.setColumnSelectionAllowed(true);
+        PTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(PTable);
+        PTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         Close.setText("Close");
         Close.addActionListener(new java.awt.event.ActionListener() {
@@ -104,8 +125,10 @@ public class SU_NewItemInfo extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Close)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,6 +148,12 @@ public class SU_NewItemInfo extends javax.swing.JFrame {
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_CloseActionPerformed
+
+    
+    private void PTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PTableMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_PTableMouseClicked
 
     /**
      * @param args the command line arguments

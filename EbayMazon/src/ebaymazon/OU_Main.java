@@ -141,6 +141,7 @@ public class OU_Main extends JFrame{
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hi! "+ string, javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 36))); // NOI18N
         
         displaytable();
+        this.setLocationRelativeTo(null);
         
     }
 

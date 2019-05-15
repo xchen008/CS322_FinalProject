@@ -16,6 +16,7 @@ public class Warning_List extends javax.swing.JFrame {
      */
     public Warning_List() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
