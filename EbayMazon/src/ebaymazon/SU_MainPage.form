@@ -53,7 +53,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="NewUsersApp" min="-2" pref="178" max="-2" attributes="0"/>
                       <Component id="AvaliableItems" min="-2" pref="178" max="-2" attributes="0"/>
-                      <Component id="WarningList" min="-2" pref="165" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="14" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -101,12 +100,9 @@
                       <Component id="BlockList" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="WarningList" alignment="1" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Transaction" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Taboo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Transaction" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Taboo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" pref="27" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -133,14 +129,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewUsersAppActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JToggleButton" name="WarningList">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Warning List"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WarningListActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="NewItem">

@@ -22,7 +22,6 @@ public class SU_MainPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         AvaliableItems = new javax.swing.JToggleButton();
         NewUsersApp = new javax.swing.JToggleButton();
-        WarningList = new javax.swing.JToggleButton();
         NewItem = new javax.swing.JToggleButton();
         ListOfUsers = new javax.swing.JToggleButton();
         Transaction = new javax.swing.JToggleButton();
@@ -50,13 +49,6 @@ public class SU_MainPage extends javax.swing.JFrame {
         NewUsersApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NewUsersAppActionPerformed(evt);
-            }
-        });
-
-        WarningList.setText("Warning List");
-        WarningList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WarningListActionPerformed(evt);
             }
         });
 
@@ -124,8 +116,7 @@ public class SU_MainPage extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NewUsersApp, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AvaliableItems, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WarningList, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AvaliableItems, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -162,11 +153,9 @@ public class SU_MainPage extends javax.swing.JFrame {
                     .addComponent(ListOfUsers)
                     .addComponent(BlockList))
                 .addGap(56, 56, 56)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(WarningList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Transaction)
-                        .addComponent(Taboo)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Transaction)
+                    .addComponent(Taboo))
                 .addGap(18, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel)
@@ -206,10 +195,6 @@ public class SU_MainPage extends javax.swing.JFrame {
         fr.setVisible(true);
     }//GEN-LAST:event_BlockListActionPerformed
 
-    private void WarningListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WarningListActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WarningListActionPerformed
-
     private void AvaliableItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AvaliableItemsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AvaliableItemsActionPerformed
@@ -221,6 +206,8 @@ public class SU_MainPage extends javax.swing.JFrame {
 
     private void ComplainsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComplainsActionPerformed
         // TODO add your handling code here:
+        SU_Complaint fr = new SU_Complaint();
+        fr.setVisible(true);
     }//GEN-LAST:event_ComplainsActionPerformed
 
     private void TransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionActionPerformed
@@ -279,7 +266,6 @@ public class SU_MainPage extends javax.swing.JFrame {
     private javax.swing.JToggleButton NewUsersApp;
     private javax.swing.JToggleButton Taboo;
     private javax.swing.JToggleButton Transaction;
-    private javax.swing.JToggleButton WarningList;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
