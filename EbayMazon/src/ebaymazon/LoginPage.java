@@ -19,6 +19,7 @@ public class LoginPage extends javax.swing.JFrame {
     public LoginPage() {
 
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -227,7 +228,7 @@ public class LoginPage extends javax.swing.JFrame {
                 }
             }
             if (sets == 0){ //this works cuz pop up only appears for people that got a complaint
-                ComplaintJustification justify=new ComplaintJustification();
+                ComplaintJustification justify=new ComplaintJustification(Username);
                 justify.setVisible(true);
                 this.setVisible(false);
             }

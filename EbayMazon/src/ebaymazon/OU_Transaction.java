@@ -33,6 +33,7 @@ public class OU_Transaction extends javax.swing.JFrame {
     public OU_Transaction(String user){
         
         initComponents();
+        this.setLocationRelativeTo(null);
         Object[][] data = new Object[30][5];
         
         try

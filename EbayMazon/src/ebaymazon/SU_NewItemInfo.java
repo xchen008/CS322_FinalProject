@@ -20,6 +20,7 @@ public class SU_NewItemInfo extends javax.swing.JFrame {
     
     public SU_NewItemInfo() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Object[][] data=new Object[30][6];
         try {
             Connection conn=DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");

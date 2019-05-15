@@ -33,6 +33,7 @@ public class Application_User extends javax.swing.JFrame {
      */
     public Application_User() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

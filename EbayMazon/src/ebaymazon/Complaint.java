@@ -25,6 +25,7 @@ public class Complaint extends javax.swing.JFrame {
      */
     public Complaint() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

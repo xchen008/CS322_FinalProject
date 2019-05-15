@@ -20,6 +20,7 @@ public class OU_Sell_App extends javax.swing.JFrame {
      */
     public OU_Sell_App() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -31,6 +31,7 @@ public class OU_Profile extends javax.swing.JFrame {
         
         str = string;
         initComponents();
+        this.setLocationRelativeTo(null);
         try
         {
             Connection connect = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/jmaxdb?useLegacyDatetimeCode=false&serverTimezone=America/New_York","csc322","comp2020");

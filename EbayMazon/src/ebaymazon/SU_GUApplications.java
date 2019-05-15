@@ -29,6 +29,7 @@ public class SU_GUApplications extends javax.swing.JFrame {
 
     public SU_GUApplications() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Object[][] data = new Object[30][4];
         try
         {

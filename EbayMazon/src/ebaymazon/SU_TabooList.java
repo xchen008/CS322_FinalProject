@@ -31,7 +31,7 @@ public class SU_TabooList extends javax.swing.JFrame {
      */
     public SU_TabooList() {
         initComponents();
-                this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
 
         Object[][] data = new Object[20][2];
         try
